@@ -1,15 +1,20 @@
 let definition = document.getElementById("definition")
-
+let input = document.querySelector(".input")
 
 
 
 let renderWord = (aWord) => {
     return new Promise((resolve, reject) =>{
         let req = new XMLHttpRequest();
-        req.open("GET", `https://api.dictionaryapi.dev/api/v2/entries/en/${aWord}`);
+        try{ 
+            req.open("GET", `https://api.dictionaryapi.dev/api/v2/entries/en/${aWord}`);}
+        catch(err){
+            console.log("This was not a word")
+        }
         req.addEventListener('readystatechange', ()=> {
             if(req.status === 200 ){
-                resolve("This is a word")
+                let word = JSON.parse(req.response)[0].word 
+                resolve(word)
             }
             else(
                 reject("Not a word")
@@ -21,42 +26,10 @@ let renderWord = (aWord) => {
 }
 
 
-renderWord("AHHHHHHHHHH").then((word) =>{
-    console.log(word)}
-).catch(nrWord =>{
-    console.log("This is not a real word")
+input.addEventListener("input",()=>{
+    renderWord(input.value).then(word =>{
+        definition.textContent = word   
+}).catch(ntword => {
+        definition.textContent = ntword
+    })
 })
-
-
-// let getSomething = ()=>{
-//     return new Promise((resolved, rejected) =>{
-//         resolved("A word")
-
-//         rejected("Not a word")
-//     })
-// }
-
-
-// getSomething().then(data =>{
-//     console.log(data)
-// })
-
-// let renderWord = () => {
-//     return new Promise((resolved, rejected) =>{
-//         let req = new XMLHttpRequest()
-//         req.open('GET', `https://api.dictionaryapi.dev/api/v2/entries/en/hello`)
-//         req.addEventListener('readystatechange', ()=>{
-//             if(req.status === 200){
-//                 resolved("Resolved!")
-//             }
-//             else{
-//                 rejected("Not Resolved")
-//             }
-//         req.send();
-//         })
-//     })
-// }
-
-// renderWord().then(status =>{
-//     console.log(status)
-// })
