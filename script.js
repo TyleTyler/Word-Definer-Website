@@ -1,38 +1,46 @@
-let input = document.querySelector(".input");
 let definition = document.getElementById("definition")
+let input = document.querySelector(".input")
 
 
 
-
-let renderWord = (callBack)=> {
-    let req = new XMLHttpRequest();
-    req.open("GET", `https://api.dictionaryapi.dev/api/v2/entries/en/${input.value}`);
-    req.addEventListener('readystatechange', ()=> {
-        if(req.status === 200){
-            console.log(JSON.parse(req.responseText))
-           callBack(req, undefined)
-        }
-        else {
-            callBack(undefined, "Not a word")
-        }
-        
-    })
-
-
-    req.send();
-}
-setInterval(
-    function ()  {renderWord((data, err)=> {
-              
-            if(err){
-                definition.innerText = err
+let renderWord = (aWord) => {
+    return new Promise((resolve, reject) =>{
+        let req = new XMLHttpRequest();
+        req.open("GET", `https://api.dictionaryapi.dev/api/v2/entries/en/${aWord}`);
+        req.addEventListener('readystatechange', ()=> {
+            if(req.status === 200){
+                try{
+                    let word = JSON.parse(req.response)[0]
+    
+                    resolve(word)
+                }
+                catch(err){
+                    console.log()
+                }
+                
             }
-            else{
-                let oudata = JSON.parse(data.responseText) 
-                definition.innerText = oudata[0].word
-            }
+            else(
+                reject("Not a word")
+            )
+            
         })
-    },
-     1000
-)
+        req.send();
+    })
+}
+
+
+input.addEventListener("input",()=>{
+   
+    renderWord(input.value).then(word =>{
+        definition.innerText = `${word.word} : `
+        word.meanings.forEach(meaning => {
+             meaning.definitions.forEach(definitions =>{
+                definition.innerHTML += `<br> ${definitions.definition}`
+             })
+        })
+}).catch(ntword => {
+        definition.textContent = ntword
+    })
+})
+
 
