@@ -3,6 +3,7 @@ let input = document.querySelector(".input")
 
 
 
+
 let renderWord = (aWord) => {
     return new Promise((isWord, isnotWord) =>{
         let req = new XMLHttpRequest();
@@ -37,9 +38,9 @@ input.addEventListener("input",()=>{
     renderWord(input.value).then(word =>{
         console.log(word.meanings)
         let fullWords = []
-        definition.innerText = `${word.word} :`
+        definition.innerHTML = `<span class = "display">${Cap(word.word)} :</span> `
         word.meanings.forEach(meaning => {
-            fullWords.push(`<br> ${meaning.partOfSpeech} -`)
+            fullWords.push(`<br> ${Cap(meaning.partOfSpeech)} -`)
             meaning.definitions.forEach(definitions =>{ 
                 for(let i = 0; i <fullWords.length; i++){
                     fullWords[i] += `<ul> <li>${definitions.definition}</li></ul>`
@@ -55,3 +56,7 @@ input.addEventListener("input",()=>{
    }
 
 })
+
+function Cap(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
