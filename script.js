@@ -39,10 +39,10 @@ input.addEventListener("input",()=>{
         let fullWords = []
         definition.innerText = `${word.word} :`
         word.meanings.forEach(meaning => {
-            fullWords.push(` <br> ${meaning.partOfSpeech} -`)
+            fullWords.push(`<br> ${meaning.partOfSpeech} -`)
             meaning.definitions.forEach(definitions =>{ 
                 for(let i = 0; i <fullWords.length; i++){
-                    fullWords[i] += `<br> ${definitions.definition}`
+                    fullWords[i] += `<ul> <li>${definitions.definition}</li></ul>`
                 }
              })
             })
