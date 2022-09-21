@@ -4,7 +4,7 @@ let input = document.querySelector(".input")
 
 
 let renderWord = (aWord) => {
-    return new Promise((resolve, reject) =>{
+    return new Promise((isWord, isnotWord) =>{
         let req = new XMLHttpRequest();
         req.open("GET", `https://api.dictionaryapi.dev/api/v2/entries/en/${aWord}`);
         req.addEventListener('readystatechange', ()=> {
@@ -12,7 +12,7 @@ let renderWord = (aWord) => {
                 try{
                     let word = JSON.parse(req.response)[0]
     
-                    resolve(word)
+                    isWord(word)
                 }
                 catch(err){
                     console.log()
@@ -20,7 +20,7 @@ let renderWord = (aWord) => {
                 
             }
             else(
-                reject("Not a word")
+                isnotWord("Not a word")
             )
             
         })
@@ -30,17 +30,28 @@ let renderWord = (aWord) => {
 
 
 input.addEventListener("input",()=>{
-   
+   if(input.value.length === 0){
+    definition.textContent = " " 
+   }
+   else{
     renderWord(input.value).then(word =>{
-        definition.innerText = `${word.word} : `
+        console.log(word.meanings)
+        let fullWords = []
+        definition.innerText = `${word.word} :`
         word.meanings.forEach(meaning => {
-             meaning.definitions.forEach(definitions =>{
-                definition.innerHTML += `<br> ${definitions.definition}`
+            fullWords.push(` <br> ${meaning.partOfSpeech} -`)
+            meaning.definitions.forEach(definitions =>{ 
+                for(let i = 0; i <fullWords.length; i++){
+                    fullWords[i] += `<br> ${definitions.definition}`
+                }
              })
+            })
+        fullWords.forEach(entWord =>{
+            definition.innerHTML += `${entWord}`
         })
-}).catch(ntword => {
-        definition.textContent = ntword
+    }).catch(ntWord =>{
+        definition.textContent = ntWord
     })
+   }
+
 })
-
-
