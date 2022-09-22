@@ -41,8 +41,8 @@ input.addEventListener("input",()=>{
    else if(Cap(input.value) === "Bounce-text"){
         input.addEventListener("input",()=>{
             input.classList.add("bounce")
-            setTimeout(()=>{
-                input.classList.remove("")
+            setTimeout(()=>{   
+                input.classList.remove("bounce")
             }, 100)
    })
 }
@@ -53,8 +53,16 @@ input.addEventListener("input",()=>{
       body.classList.add("rainbowMode")
       definition.innerHTML = `<span class = "display"> You have activated Rainbow Mode</span> `
    }
-   else if(Cap(input.value) === "ntRainbow-text" && input.classList.contains("rainbowBorder")){
-    alert("You are turning off Rainbowmode ")
+   else if(input.value === ":3"){
+    let catSecret = document.querySelector(".nya")
+    let keyword = "cat"
+    definition.innerHTML = "<span class = 'ntWord'>Nya</span>"
+    catSecret.src =`https://cataas.com/${keyword}/cute`
+       setInterval(()=>{
+            if(!(input.value === ":3" )){
+                catSecret.src = " "
+            }
+       }, 1000)
    }
    else{
     renderWord(input.value).then(word =>{

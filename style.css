@@ -21,8 +21,9 @@ body{
     
 }
 .bounce{
-    transform-origin: center;
-    animation: bounce 1s 1;
+    position: relative;
+    right: -10%;
+    animation: bounce 0.5s 1;
 }
 .ntWord{
     position: relative;
@@ -358,10 +359,10 @@ body{
 
 
 @keyframes bounce{
-    30%{
-        transform: scale(2);
+    50%{
+        font-size: 120%;
     }
-    70%{
-        transform: scale(1);
+    100%{
+        font-size: 100%;
     }
 }
