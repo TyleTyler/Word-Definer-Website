@@ -2,6 +2,8 @@ import colors from './map.js'
 
 let definition = document.getElementById("definition")
 let input = document.querySelector(".input")
+let body = document.querySelector("body")
+let heading = document.querySelector("h1")
 
 
 console.log(colors.get(1))
@@ -37,7 +39,10 @@ input.addEventListener("input",()=>{
     definition.textContent = " " 
    }
    else if(Cap(input.value) === "Rainbow-text"){
-      definition.style.color = (`${colors.get(1)}`)
+      definition.classList.add("def")
+      heading.classList.add("def")
+      body.classList.add("rainbowMode")
+      definition.innerHTML = `<span class = "display"> You have activated Rainbow Mode</span> `
    }
    else{
     renderWord(input.value).then(word =>{
@@ -65,3 +70,5 @@ input.addEventListener("input",()=>{
 function Cap(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+
