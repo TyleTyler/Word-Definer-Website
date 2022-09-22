@@ -1,8 +1,13 @@
+import colors from './map.js'
+
 let definition = document.getElementById("definition")
 let input = document.querySelector(".input")
+let body = document.querySelector("body")
+let heading = document.querySelector("h1")
+let currentCat = true;
 
 
-
+console.log(colors.get(1))
 
 let renderWord = (aWord) => {
     return new Promise((isWord, isnotWord) =>{
@@ -21,7 +26,7 @@ let renderWord = (aWord) => {
                 
             }
             else(
-                isnotWord("Not a word")
+                isnotWord("<span class = 'ntWord'> Not a word</span>")
             )
             
         })
@@ -33,6 +38,34 @@ let renderWord = (aWord) => {
 input.addEventListener("input",()=>{
    if(input.value.length === 0){
     definition.textContent = " " 
+   }
+   else if(Cap(input.value) === "Bounce-text"){
+        input.addEventListener("input",()=>{
+            input.classList.add("bounce")
+            setTimeout(()=>{   
+                input.classList.remove("bounce")
+            }, 100)
+   })
+}
+   else if(Cap(input.value) === "Rainbow-text"){
+      input.classList.add("rainbowBorder")
+      definition.classList.add("def")
+      heading.classList.add("def")
+      body.classList.add("rainbowMode")
+      definition.innerHTML = `<span class = "display"> You have activated Rainbow Mode</span> `
+   }
+   else if(input.value === ":3"){
+    if(currentCat){
+        let catSecret = document.querySelector(".nya")
+        let keyword = "cat"
+        definition.innerHTML = "<span class = 'ntWord'>Nya</span>"
+        catSecret.src =`https://cataas.com/${keyword}/cute`
+    }
+       setInterval(()=>{
+            if(!(input.value === ":3" )){
+                catSecret.src = " "
+            }
+       }, 1000)
    }
    else{
     renderWord(input.value).then(word =>{
@@ -51,7 +84,7 @@ input.addEventListener("input",()=>{
             definition.innerHTML += `${entWord}`
         })
     }).catch(ntWord =>{
-        definition.textContent = ntWord
+        definition.innerHTML = ntWord
     })
    }
 
@@ -60,3 +93,5 @@ input.addEventListener("input",()=>{
 function Cap(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+
