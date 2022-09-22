@@ -42,7 +42,7 @@ input.addEventListener("input",()=>{
         input.addEventListener("input",()=>{
             input.classList.add("bounce")
             setTimeout(()=>{
-                input.classList.remove("bounce")
+                input.classList.remove("")
             }, 100)
    })
 }
@@ -52,6 +52,9 @@ input.addEventListener("input",()=>{
       heading.classList.add("def")
       body.classList.add("rainbowMode")
       definition.innerHTML = `<span class = "display"> You have activated Rainbow Mode</span> `
+   }
+   else if(Cap(input.value) === "ntRainbow-text" && input.classList.contains("rainbowBorder")){
+    alert("You are turning off Rainbowmode ")
    }
    else{
     renderWord(input.value).then(word =>{
