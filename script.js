@@ -1,8 +1,10 @@
+import colors from './map.js'
+
 let definition = document.getElementById("definition")
 let input = document.querySelector(".input")
 
 
-
+console.log(colors.get(1))
 
 let renderWord = (aWord) => {
     return new Promise((isWord, isnotWord) =>{
@@ -33,6 +35,9 @@ let renderWord = (aWord) => {
 input.addEventListener("input",()=>{
    if(input.value.length === 0){
     definition.textContent = " " 
+   }
+   else if(Cap(input.value) === "Rainbow-text"){
+      definition.style.color = (`${colors.get(1)}`)
    }
    else{
     renderWord(input.value).then(word =>{
