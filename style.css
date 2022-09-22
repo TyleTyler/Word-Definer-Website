@@ -1,3 +1,10 @@
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .display{
     font-size: 4rem;
 }
@@ -8,9 +15,21 @@
     background-color: black;
 }
 .input{
+    position: relative;
+    right: -17%;
     transform: scale(1.4);
 }
+.ntWord{
+    position: relative;
+    right: 9%;
+    font-size: 3rem;
+}
+.rainbowBorder{
+    background-color: black;
+    border:2px solid black ;
+    animation:rainbow-text 2s infinite, rainbow-border 2s infinite;
 
+}
 
 @keyframes rainbow-text {
     0% {
@@ -171,3 +190,162 @@
     animation: rainbow-text 1s infinite;
   }
   
+  @keyframes rainbow-border {
+    0% {
+        border-color: #e87d7d;
+      }
+      2% {
+        border-color: #e88a7d;
+      }
+      4% {
+        border-color: #e8977d;
+      }
+      6% {
+        border-color: #e8a47d;
+      }
+      8% {
+        border-color: #e8b07d;
+      }
+      10% {
+        border-color: #e8bd7d;
+      }
+      12% {
+        border-color: #e8ca7d;
+      }
+      14% {
+        border-color: #e8d77d;
+      }
+      16% {
+        border-color: #e8e47d;
+      }
+      18% {
+        border-color: #dfe87d;
+      }
+      20% {
+        border-color: #d3e87d;
+      }
+      22% {
+        border-color: #c6e87d;
+      }
+      24% {
+        border-color: #b9e87d;
+      }
+      26% {
+        border-color: #ace87d;
+      }
+      28% {
+        border-color: #9fe87d;
+      }
+      30% {
+        border-color: #92e87d;
+      }
+      32% {
+        border-color: #86e87d;
+      }
+      34% {
+        border-color: #7de881;
+      }
+      36% {
+        border-color: #7de88e;
+      }
+      38% {
+        border-color: #7de89b;
+      }
+      40% {
+        border-color: #7de8a8;
+      }
+      42% {
+        border-color: #7de8b5;
+      }
+      44% {
+        border-color: #7de8c1;
+      }
+      46% {
+        border-color: #7de8ce;
+      }
+      48% {
+        border-color: #7de8db;
+      }
+      50% {
+        border-color: #7de8e8;
+      }
+      52% {
+        border-color: #7ddbe8;
+      }
+      54% {
+        border-color: #7dcee8;
+      }
+      56% {
+        border-color: #7dc1e8;
+      }
+      58% {
+        border-color: #7db5e8;
+      }
+      60% {
+        border-color: #7da8e8;
+      }
+      62% {
+        border-color: #7d9be8;
+      }
+      64% {
+        border-color: #7d8ee8;
+      }
+      66% {
+        border-color: #7d81e8;
+      }
+      68% {
+        border-color: #867de8;
+      }
+      70% {
+        border-color: #927de8;
+      }
+      72% {
+        border-color: #9f7de8;
+      }
+      74% {
+        border-color: #ac7de8;
+      }
+      76% {
+        border-color: #b97de8;
+      }
+      78% {
+        border-color: #c67de8;
+      }
+      80% {
+        border-color: #d37de8;
+      }
+      82% {
+        border-color: #df7de8;
+      }
+      84% {
+        border-color: #e87de4;
+      }
+      86% {
+        border-color: #e87dd7;
+      }
+      88% {
+        border-color: #e87dca;
+      }
+      90% {
+        border-color: #e87dbd;
+      }
+      92% {
+        border-color: #e87db0;
+      }
+      94% {
+        border-color: #e87da4;
+      }
+      96% {
+        border-color: #e87d97;
+      }
+      98% {
+        border-color: #e87d8a;
+      }
+      100% {
+        border-color: #e87d7d;
+      }
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+}

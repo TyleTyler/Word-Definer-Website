@@ -25,7 +25,7 @@ let renderWord = (aWord) => {
                 
             }
             else(
-                isnotWord("Not a word")
+                isnotWord("<span class = 'ntWord'> Not a word</span>")
             )
             
         })
@@ -39,6 +39,7 @@ input.addEventListener("input",()=>{
     definition.textContent = " " 
    }
    else if(Cap(input.value) === "Rainbow-text"){
+      input.classList.add("rainbowBorder")
       definition.classList.add("def")
       heading.classList.add("def")
       body.classList.add("rainbowMode")
@@ -61,7 +62,7 @@ input.addEventListener("input",()=>{
             definition.innerHTML += `${entWord}`
         })
     }).catch(ntWord =>{
-        definition.textContent = ntWord
+        definition.innerHTML = ntWord
     })
    }
 
