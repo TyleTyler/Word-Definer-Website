@@ -4,6 +4,7 @@ let definition = document.getElementById("definition")
 let input = document.querySelector(".input")
 let body = document.querySelector("body")
 let heading = document.querySelector("h1")
+let currentCat = true;
 
 
 console.log(colors.get(1))
@@ -54,10 +55,12 @@ input.addEventListener("input",()=>{
       definition.innerHTML = `<span class = "display"> You have activated Rainbow Mode</span> `
    }
    else if(input.value === ":3"){
-    let catSecret = document.querySelector(".nya")
-    let keyword = "cat"
-    definition.innerHTML = "<span class = 'ntWord'>Nya</span>"
-    catSecret.src =`https://cataas.com/${keyword}/cute`
+    if(currentCat){
+        let catSecret = document.querySelector(".nya")
+        let keyword = "cat"
+        definition.innerHTML = "<span class = 'ntWord'>Nya</span>"
+        catSecret.src =`https://cataas.com/${keyword}/cute`
+    }
        setInterval(()=>{
             if(!(input.value === ":3" )){
                 catSecret.src = " "
