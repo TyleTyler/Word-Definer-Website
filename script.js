@@ -38,6 +38,14 @@ input.addEventListener("input",()=>{
    if(input.value.length === 0){
     definition.textContent = " " 
    }
+   else if(Cap(input.value) === "Bounce-text"){
+        input.addEventListener("input",()=>{
+            input.classList.add("bounce")
+            setTimeout(()=>{
+                input.classList.remove("bounce")
+            }, 100)
+   })
+}
    else if(Cap(input.value) === "Rainbow-text"){
       input.classList.add("rainbowBorder")
       definition.classList.add("def")

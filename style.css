@@ -18,6 +18,11 @@ body{
     position: relative;
     right: -17%;
     transform: scale(1.4);
+    
+}
+.bounce{
+    transform-origin: center;
+    animation: bounce 1s 1;
 }
 .ntWord{
     position: relative;
@@ -348,4 +353,15 @@ body{
 
   textarea:focus, input:focus{
     outline: none;
+}
+
+
+
+@keyframes bounce{
+    30%{
+        transform: scale(2);
+    }
+    70%{
+        transform: scale(1);
+    }
 }
